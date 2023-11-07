@@ -66,12 +66,12 @@ console.log(itemElem);
 
 // Creare event listener - gestione dello slider al click next
 document.querySelector(".next").addEventListener("click", function () {
-    // Se indice corrente è < di ultimo indice dell'array, togliere la classe "active" da elemento corrente, incrementare l'indice corrente e aggiungere classe "active" al nuovo elemento corrente
+    // Se indice corrente è < di ultimo indice dell'array, togliere la classe "active" da elemento corrente, incrementare l'indice corrente e aggiungere classe "active" al nuovo elemento corrente; se indice corrente è === all'ultimo indice dell'array, rimuovere la classe "active" da elemento corrente, riportare l'indice corrente a 0, e aggiungere classe "active" al nuovo elemento corrente per ottenere ciclo infinito
     if (curImageIndex < itemElem.length - 1) {
         itemElem[curImageIndex].classList.remove("active");
         curImageIndex++;
         itemElem[curImageIndex].classList.add("active");
-    } else {
+    } else if (curImageIndex === itemElem.length - 1) {
         itemElem[curImageIndex].classList.remove("active");
         curImageIndex = 0;
         itemElem[curImageIndex].classList.add("active");
@@ -83,7 +83,7 @@ document.querySelector(".prev").addEventListener("click", function () {
         itemElem[curImageIndex].classList.remove("active");
         curImageIndex--;
         itemElem[curImageIndex].classList.add("active");
-    } else {
+    } else if (curImageIndex === 0) {
         itemElem[curImageIndex].classList.remove("active");
         curImageIndex = itemElem.length - 1;
         itemElem[curImageIndex].classList.add("active");
